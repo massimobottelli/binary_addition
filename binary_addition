@@ -1,0 +1,75 @@
+#!/usr/bin/env python
+
+# binary_addition
+print ("binary_addition: sum binary numbers")
+
+def get_decimal(prompt):
+    # validate input
+    while True:
+        try:
+            value = int(input (prompt))
+        except ValueError:
+            print("Please insert integer number.")
+            continue
+        if value > 127:
+            print("Please insert number < 128.")
+            continue
+        else:
+            break
+    return value
+
+def dec_to_bin(value):
+    # decimal to binary
+    bin = []
+    for i in range(8,0,-1):
+        p = 2**(i-1)
+        if (p > value):
+            bin.append(0)
+        else:
+            bin.append(1)
+            value = value % p
+    return bin
+
+def sum_bin(bin1,bin2):
+    # sum two binary numbers
+    sum = []
+    r = [0] * 8
+    for i in range(8,0,-1):
+        s = bin1[i-1]+bin2[i-1]+r[i-1]
+        if s == 2: 
+            s = 0
+            r[i-2] = 1
+        if s == 3:
+            s =1
+            r[i-2] = 1
+        sum.append(s)
+    print ("R bin =", r) # debug 
+    sum.reverse()
+    return sum
+
+def bin_to_dec(value):
+    # binary to decimal
+    dec = 0
+    value.reverse()
+    for i in range(0,8,1):
+        dec = dec + value[i] * 2 ** i
+    return dec
+
+# main        
+dec1 = get_decimal("A dec =? ")
+dec2 = get_decimal("B dec =? ")
+
+bin1 = dec_to_bin (dec1)
+bin2 = dec_to_bin (dec2)
+
+print ("A bin =", bin1)
+print ("B bin =", bin2)
+
+bin_sum = sum_bin(bin1,bin2)
+print ("S bin =", bin_sum)
+
+dec_sum = bin_to_dec (bin_sum)
+print ("S dec =", dec_sum)
+
+
+
