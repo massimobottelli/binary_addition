@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # binary_addition
-print ("binary_addition: sum binary numbers")
+print ("Binary Addition: sum binary numbers\n")
 
 def get_decimal(prompt):
     # validate input
@@ -56,20 +56,22 @@ def bin_to_dec(value):
     return dec
 
 # main        
-dec1 = get_decimal("A dec =? ")
-dec2 = get_decimal("B dec =? ")
+while True:
+    dec1 = get_decimal("A dec =? ")
+    dec2 = get_decimal("B dec =? ")
 
-bin1 = dec_to_bin (dec1)
-bin2 = dec_to_bin (dec2)
+    bin1 = dec_to_bin (dec1)
+    bin2 = dec_to_bin (dec2)
 
-print ("A bin =", bin1)
-print ("B bin =", bin2)
+    print ("A bin =", bin1)
+    print ("B bin =", bin2)
 
-bin_sum = sum_bin(bin1,bin2)
-print ("S bin =", bin_sum)
+    bin_sum = sum_bin(bin1,bin2)
+    print ("S bin =", bin_sum)
 
-dec_sum = bin_to_dec (bin_sum)
-print ("S dec =", dec_sum)
+    dec_sum = bin_to_dec (bin_sum)
+    print ("S dec =", dec_sum)
+    print ("\n------------------\n")
 
 
 
